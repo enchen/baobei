@@ -1,0 +1,75 @@
+
+<!-- <div 
+
+style="position:fixed;left:0px;top:90px;background:blue;opacity:0.6;color:white;overflow:auto;height:650px;"> -->
+<!-- 	目录部分 -->
+	<div style="position:fixed;width:20%;height:85%;overflow:auto;">
+	<div style="width:20%;height:30px;background:blue;opacity:0.6;position:fixed;font-size:16px;left:0px;bottom:0px;color:white;">{{nowdir}}</div>
+	<button type="button" class="btn btn-primary" ng-click="isCollapsed = !isCollapsed">目录</button>
+    
+	<div uib-collapse="isCollapsed"  >
+		<ul style="overflow:auto;">
+    <li ng-repeat="data in tree" style="margin-right:20px;" ng-include="'tree_item_renderer.html'"></li>
+       </ul>
+	</div>
+</div>
+<div style="position:fixed;right:0px;width:80%;height:85%;overflow:auto;" >
+<div ng-repeat="result in entity" >
+<div style="border:1px solid grey;float:left;margin-left:4px;margin-top:5px;"><img ng-click="gobigdown(bigimage,result)" 
+style="height:140px;" ng-mouseover="picin($index)" ng-mouseleave="picout($index)" alt="" 
+src="http://192.168.2.249/www/small/dpimage/{{result.picpath}}"></div>
+</div>
+</div>
+
+<div style="border:3px solid black;position:fixed;{{bigposition}}:0px;bottom:0px;display:{{bigvisible}}">
+<div  ng-mouseover="bigin($index)" style="height:90px;background:blue;opacity:0.8;color:white;"> 
+<div style="height:20px;font-size:20px;">图片名：{{cname}}</div>
+<div style="height:30px;font-size:22px;">高度：{{cheight}}</div>
+<div style="height:30px;font-size:22px;">宽度：{{cwidth}}</div>
+
+
+</div>
+
+</div>
+<div>
+<script type="text/ng-template" id="myModalContent.html">
+    
+ <div class="modal-footer" style="margin-top:10px;">
+      <button ng-class="{true:'btn btn-success',false:'btn btn-danger'}[isdescribled]"  type="button" ng-click="ok()">原始图片</button>
+        </div>
+        <div class="modal-body" style="width:80%;float:left;;top:0px;position:relative; " >
+         <img style="width:100%;" src="{{bigbigpic}}">
+<div style="height:90px;background:blue;opacity:0.5;color:white;position:fixed;top:110px;left:30px;"> 
+<div style="height:20px;font-size:20px;">图片名：{{cname}}</div>
+<div style="height:30px;font-size:22px;">高度：{{cheight}}</div>
+<div style="height:30px;font-size:22px;">宽度：{{cwidth}}</div>
+
+
+</div>
+        </div>
+       <div class="modal-body" style="width:20%;float:left;;top:0px;">
+       
+<div ng-repeat="data in  picdescribles">
+    <div class="btn btn-primary" ng-click="declick()" style="float:left;margin-top:5px;margin-bottom:5px;margin-left:5px;">
+      {{data}}
+    </div>
+  </div>
+
+     
+ 
+
+        <div style=""><input type="text" placeholder="添加图片描述" id="newde" style="width:100%;"></div>
+</br>
+        <div ><input type="button" class="btn btn-primary" maxlength="32" style="right:10px;" ng-click="newdescrible()" value="添加"></div>
+        </div>
+
+ </script>
+ <script type="text/ng-template"  id="tree_item_renderer.html">
+   
+    <img style="cursor:pointer;" src="images/folder.png" ng-click="gettreeboys(data)">
+    <span ng-click="gettreeboys(data)" style="cursor:pointer;"> {{data.name}}</span>
+    <ul>
+        <li style="cursor:pointer;" ng-repeat="data in data.nodes" ng-include="'tree_item_renderer.html'"></li>
+    </ul>
+</script>
+ </div>

@@ -1,0 +1,1 @@
+var picapp=angular.module('pic.bg', ['ngAnimate', 'ui.bootstrap','ui.router','ui.scrollpoint']);

@@ -1,0 +1,92 @@
+<div style="width:100%;height:100%;outline:none;">
+ <form style="width:100%;height:140px;outline:none;" name="outerForm" class="tab-form-demo">
+    <uib-tabset>
+      <uib-tab heading="关键字">
+       <div style="width:100%;height:100%;">
+       <div style="width:500px;height:82px;float:left;background:grey;overflow:auto;">
+       <ul ng-repeat="choicedir in  choicedirs track by $index">
+      <li style="cursor:pointer;color:white;" ng-click="gobydir3(choicedir)">{{choicedir}}</li>
+       </ul>
+       </div>
+          <div style="float:left;margin-top:34px;font-size:20px;" class="radio-inline">
+         
+      <label><input id="ismulu" name="display" type="radio" value="true"   checked onclick="document.getElementById('rsb').style.display = 'none'">目录</label>
+          
+       <label style="margin-left:50px;"><input name="display" type="radio" value="false" onclick="document.getElementById('rsb').style.display = ''" >描述</label>
+          </div>
+          <div style="float:left;margin-top:34px;margin-left:50px;">
+          <input class="form-control" id="skey" ng-keyup="keyup()"  type="text" style="width:400px;height:40px;font-size:22px;">
+          </div>
+          <div id="rsb" class="btn btn-success" style="display:none;float:left;margin-left:60px;margin-top:30px;width:100px;height:50px;font-size:24px;" ng-click="gogo()">GO</div>
+<div style="background:blue;opacity:0.4;position:fixed;top:200px;left:700px;height:800px;overflow:auto; ">
+<ul ng-repeat="data in  dirlist">
+<li style="cursor:pointer;font-size:16px;color:white;" ng-click="gobydir(data)">{{data}}</li>
+</ul>
+</div>
+       </div>
+       
+      </uib-tab>
+
+      <uib-tab heading="色彩">
+<div style="margin-left:auto;margin-right:auto;margin-top:40px; width:380px;height:60px;">			 
+ <input style="float:left;" id="picfile" type="file" name="file"  ng-model="uploadme">
+ <input style="float:left;" class="btn btn-danger" type="button" value="查询相似图片" ng-click="picfamiliar()">
+</div>
+
+      
+      </uib-tab>
+    </uib-tabset>
+  </form>
+  <div style="margin-bottom:4px;">
+  <div ng-repeat="dirboy in dirboys" >
+  <div ng-click="gobydir2(dirboy)" style="float:left;color:blue;font-size:18px;margin-left:20px;font-style:italic;cursor:pointer;text-decoration: underline;">{{dirboy.name}}</div>
+  </div>
+  </div>
+  <div >
+  <div ng-repeat="result in entity" >
+<div style="border:1px solid grey;float:left;margin-left:4px;margin-top:5px;"><img ng-click="gobigdown(bigimage,result)" 
+style="height:140px;" ng-mouseover="picin($index)" ng-mouseleave="picout($index)" alt="" 
+src="http://192.168.2.249/www/small/dpimage/{{result.picpath}}"></div>
+</div>
+</div>
+<div style="border:3px solid black;position:fixed;{{bigposition}}:0px;bottom:0px;display:{{bigvisible}}">
+<div  ng-mouseover="bigin($index)" style="height:90px;background:blue;opacity:0.8;color:white;"> 
+<div style="height:20px;font-size:20px;">图片名：{{cname}}</div>
+<div style="height:30px;font-size:22px;">高度：{{cheight}}</div>
+<div style="height:30px;font-size:22px;">宽度：{{cwidth}}</div>
+</div>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+    
+ <div class="modal-footer" style="margin-top:10px;">
+      <button ng-class="{true:'btn btn-success',false:'btn btn-danger'}[isdescribled]"  type="button" ng-click="ok()">原始图片</button>
+        </div>
+        <div class="modal-body" style="width:80%;float:left;;top:0px;position:relative; " >
+         <img style="width:100%;" src="{{bigbigpic}}">
+<div style="height:90px;background:blue;opacity:0.5;color:white;position:fixed;top:110px;left:30px;"> 
+<div style="height:20px;font-size:20px;">图片名：{{cname}}</div>
+<div style="height:30px;font-size:22px;">高度：{{cheight}}</div>
+<div style="height:30px;font-size:22px;">宽度：{{cwidth}}</div>
+
+
+</div>
+        </div>
+       <div class="modal-body" style="width:20%;float:left;;top:0px;">
+       
+<div ng-repeat="data in  picdescribles">
+    <div class="btn btn-primary" ng-click="declick()" style="float:left;margin-top:5px;margin-bottom:5px;margin-left:5px;">
+      {{data}}
+    </div>
+  </div>
+
+     
+ 
+
+        <div style=""><input type="text" placeholder="添加图片描述" id="newde" style="width:100%;"></div>
+</br>
+        <div ><input type="button" class="btn btn-primary" maxlength="32" style="right:10px;" ng-click="newdescrible()" value="添加"></div>
+        </div>
+
+ </script>
+</div>

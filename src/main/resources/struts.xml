@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	 
+    <!-- 将STRUTS 交给SPRING管理 -->
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<!-- 后缀为.ACTION的全部交给STRUTS处理 -->
+	<constant name="struts.action.extension" value="php"></constant>
+	<!-- struts 动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- Action名称中是否还是用斜线 -->
+	<constant name="struts.enable.SlashesInActionNames" value="false" />
+	 <constant name="struts.devMode" value="true"/>  
+	 
+	 <!-- 设置浏览器是否缓存静态内容。默认值为true(生产环境下使用),开发阶段最好关闭  -->
+    <constant name="struts.serve.static.browserCache" value="false" />
+     <constant name="struts.multipart.saveDir" value="D:/tmp/"></constant>
+	<constant name="struts.multipart.maxSize" value="20971520"/><!-- 文件上传最大size 20M -->
+</struts>

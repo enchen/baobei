@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html  ng-app="baobei.bg">
+<head>
+    <meta charset="UTF-8">
+    <title>DP内容检索</title>
+    <link href="css/bootstrap.231.min.css" rel="stylesheet">
+<!--     <link href="css/mui.min.css" rel="stylesheet"> -->
+    <link href="css/cn.css" rel="stylesheet">
+</head>
+<body ng-controller="homeCtrl">
+<div id="texthead" class="top-nav primary row btn-group" >
+<div  class="col-md-6  btn btn-primary" ng-model="radioModel" uib-btn-radio="'Left'" ng-click="gosearchbtn()">文字检索</div>
+<div class="col-md-5  btn btn-primary" ng-model="radioModel" uib-btn-radio="'Right'" ng-click="uploadbtn()">使用统计</div>
+<!-- <div class="col-md-1  btn btn-danger" ng-model="radioModel" uib-btn-radio="'RightRight'" ng-click="gopass()">口令/管理</div> -->
+<div class="btn-group col-md-1" uib-dropdown dropdown-append-to-body>
+      <button id="btn-append-to-body" style="width:100%;height:100%;font-size: 40px;" type="button" class="btn btn-danger" uib-dropdown-toggle>
+        综合 <span class="caret"></span>
+      </button>
+      <ul uib-dropdown-menu role="menu" style="font-size:16px;" aria-labelledby="btn-append-to-body">
+        <li style="text-align:center;cursor:pointer;" ng-click="inout()" role="menuitem">登陆/退出</li>
+        <li style="text-align:center;cursor:pointer;" ng-click="gopass()" role="menuitem">口令修改</li>
+        <li style="text-align:center;cursor:pointer;" ng-click="goother()" role="menuitem">图片查询系统</li>
+       
+      </ul>
+    </div>
+</div>
+<div ui-view class="bb-full-screen">
+
+</div>
+
+
+
+<script  src="framework/angular.min.js"></script>
+<script  src="framework/ui-router.js"></script>
+<script  src="framework/angular-animate.min.js"></script>
+<script  src="framework/ui-bootstrap-0.14.3.min.js"></script>
+<script  src="framework/boostrapadd.js"></script>
+<script  src="framework/scrollpoint.min.js"></script>
+<script  src="framework/Chart.js"></script>
+<script  src="framework/angular-chart.min.js"></script>
+<script  src="js/app.js"></script>
+<script  src="js/controllers.js"></script>
+<script  src="js/directives.js"></script>
+<script  src="js/services.js"></script>
+<script  src="js/filter.js"></script>
+
+</body>
+</html>

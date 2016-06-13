@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="starter" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>ssh</display-name>
+<!-- 	定义编码过滤器 -->
+	<filter>
+		<filter-name>EncodingFilter</filter-name>
+		<filter-class>cn.filters.EncodeFilter</filter-class>
+	</filter>
+		<filter-mapping>
+		<filter-name>EncodingFilter</filter-name>
+		<url-pattern>*.php</url-pattern>
+	</filter-mapping>
+  <!-- 定义Struts2的核心Filter -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+		<!-- 让Struts2的核心Filter拦截所有请求 -->
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring.xml</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:log4j.xml</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>60000</param-value>
+	</context-param>
+	<listener>
+		<listener-class>
+			org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+	<!-- 内存泄漏管理 确保是第一个listener -->
+	<listener>
+		<listener-class>
+			org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+
+	<servlet>
+		<servlet-name>druidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>druidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
+</web-app>

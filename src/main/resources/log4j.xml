@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	<appender name="LOG.CONSOLE"
+		class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy年MM月dd日 HH:mm:ss} %-5p] %m%n - %l%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+	<appender name="LOG.DEBUG"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="${webapp.root}/WEB-INF/log/debug.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="5120KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy年MM月dd日 HH:mm:ss} %-5p]: %m%n - %l%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="DEBUG" />
+		</filter>
+	</appender>
+	<appender name="LOG.INFO"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${webapp.root}/WEB-INF/log/info.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy年MM月dd日 HH:mm:ss} %-5p]: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+			<param name="LevelMax" value="INFO" />
+		</filter>
+	</appender>
+	<appender name="LOG.ERROR"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="${webapp.root}/WEB-INF/log/error.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="5120KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="encoding" value="GBK" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy年MM月dd日 HH:mm:ss} %-5p] %m%n - %l%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR" />
+			<param name="LevelMax" value="ERROR" />
+		</filter>
+	</appender>
+	<appender name="LOG.FATAL"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="${webapp.root}/WEB-INF/log/fatal.log" />
+		<param name="MaxFileSize" value="5120KB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy年MM月dd日 HH:mm:ss} %-5p] %m%n - %l%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="FATAL" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+	
+	<root>
+		<priority value="DEBUG" />
+		<appender-ref ref="LOG.INFO" />
+		<appender-ref ref="LOG.ERROR" />
+		<appender-ref ref="LOG.FATAL" />
+	</root>
+</log4j:configuration>

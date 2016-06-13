@@ -1,0 +1,75 @@
+
+<div  id="s01" style=" width: 100%;color:white;" >
+	<!-- 查询头部 -->
+	<div style=" margin-top: 70px;width:100%;">
+	<div class="row" ui-scrollpoint="+50" 
+		style="margin-left: auto; margin-right: auto; width: 800px;">
+		<input id="queryinput" ng-keyup="myKeyup($event)" type="text" class="form-control"
+			style="width: 600px; float: left; height: 50px; font-size: 26px;">
+		<input type="button" ng-click="getresult()" class="btn btn-success"
+			style="width: 100px; height: 50px; float: right; font-size: 24px;"
+			value="GO">
+	</div>
+	</div>
+	<!-- 查询体部 -->
+	<div style="width:100%; margin-top:100px; ">
+	<div  ng-repeat="result in results" >
+        <div style="width: 85%; float: left; ">
+		<div style="text-indent:5px;font-size:14px;line-height:22px;margin-top:10px;"  ng-bind-html="result.content | html"></div>
+		<div style="color:white;background:#37474F;color:#FFD180;font-style:italic; text-align:right;">{{result.path}}</div>
+		</div>
+		<div style="width: 15%; float: left;">
+		<div style="float:left;height:50px;background:#BF360C;width:2%;margin-top:8px;"></div>
+		<div  style="float:left;height:100%;width:95%;">
+			<div style="width: 100%;cursor:pointer;color:#EEFF41;" ng-click="getdoc(result.path+result.filename)">{{$index+1+": "+result.filename}}</div>
+			<div style="width: 100%">{{result.updatetime}}</div>
+			<div style="width: 100%; cursor:pointer;color:#2962FF;" ng-click="seeall(result.filename,result.path)">查看全文</div>
+		</div>
+		</div>
+	
+	
+	</div>
+	</div>
+</div>
+<div id="s02"   style="display:none; width: 100%;color:white;">
+ <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">选择原因</h3>
+        </div>
+        <div class="modal-body">
+            审核后将会被清理
+            <ul>
+                <li>
+                   <div class="checkbox">
+                       <label>
+                      <input type="checkbox" id="check1">
+                                             文档不完整！
+                     </label>
+                   </div>
+                </li>
+                 <li>
+                    <div class="checkbox">
+                       <label>
+                      <input type="checkbox" id="check2">
+                                             没价值！
+                     </label>
+                   </div>
+                </li>
+            </ul>
+           
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">提交</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </script>
+<div id="rebtn2" ui-scrollpoint="+50"  style="width: 100px; height: 50px; float: right; font-size: 24px; margin-top:20px;right:20px;" ng-click="open()" class="btn btn-danger">举报</div>
+<div id="rebtn" ui-scrollpoint="+50" style="width: 100px; height: 50px; float: left; font-size: 24px; margin-top:20px;left:20px;" ng-click="seeallreturn()" class="btn btn-success">返回</div>
+
+<div style="font-size: 24px; ">{{detailname}}</div>
+<div  ng-repeat="detail in details" >
+<div style="color:white;width:80%;margin-left:auto;margin-right:auto;font-size:16px;line-height:28px;text-indent:10px;">
+{{detail.content}}
+</div>
+</div>
+</div>

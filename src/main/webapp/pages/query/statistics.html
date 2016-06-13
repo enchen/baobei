@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="css/angular-chart.min.css">
+<div class="row">
+<!-- 时间选择 -->
+  <div class="col-md-2 col-sm-4" style="margin-top:5px;margin-left:5px;">
+       <p class="input-group">
+              <input type="date" class="form-control" uib-datepicker-popup ng-model="dt" is-open="status.opened" datepicker-options="dateOptions"  ng-required="true" close-text="关闭" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+            
+        </div>
+      <div class="btn-group col-md-2 col-sm-4" style="margin-top:5px">
+        <label class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Left'" uncheckable>月</label>
+        <label class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Middle'" uncheckable>日</label>
+        <label class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Right'" uncheckable>周</label>
+   
+    </div>
+   <div class="col-md-2 col-sm-4"><div class="btn btn-primary" style="margin-top:5px" ng-click="goget()">确认</div></div>
+  
+
+<!-- 总使用情况开始 -->
+<div class="col-lg-12 col-md-12">
+ <div class="panel-heading" style="color:white;font-weight:bold;font-size:20px;">
+        系统总使用情况：
+</div>
+<div class="panel-body">
+<canvas id="lineall" class="chart chart-line" chart-data="data" style="color:green;"
+  chart-labels="labels" chart-legend="false" chart-series="series"
+  chart-click="onClick" height="300" width="1800">
+</canvas> 
+ </div>
+</div>
+<!-- 总使用情况结束 -->
+
+<!-- IP使用开始 -->
+<!-- 第一个 -->
+<div class="col-lg-4 col-sm-12">
+ <div class="panel-heading" style="color:white;font-weight:bold;font-size:20px;">
+        查询情况统计：
+</div>
+<div class="panel-body">
+<canvas id="polar-area1" class="chart chart-polar-area"
+ chart-legend="true" chart-data="data1" chart-labels="labels1">
+</canvas> 
+ </div>
+</div>
+
+<!-- 第二个 -->
+<div class="col-lg-4 col-sm-12">
+ <div class="panel-heading" style="color:white;font-weight:bold;font-size:20px;">
+        全文阅读统计：
+</div>
+<div class="panel-body">
+<canvas id="polar-area2" class="chart chart-polar-area"
+  chart-legend="true" chart-data="data2" chart-labels="labels2">
+</canvas> 
+ </div>
+</div>
+
+<!-- 第三个 -->
+<div class="col-lg-4 col-sm-12">
+ <div class="panel-heading" style="color:white;font-weight:bold;font-size:20px;">
+        下载量统计：
+</div>
+<div class="panel-body">
+<canvas id="polar-area3" class="chart chart-polar-area"
+  chart-legend="true" chart-data="data3" chart-labels="labels3">
+</canvas> 
+ </div>
+</div>
+
+</div>
